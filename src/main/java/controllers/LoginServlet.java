@@ -21,14 +21,15 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String operation = request.getParameter("operation");
         System.out.println(operation);
 
         if (operation.equals("login")) {
             this.login(request, response);
+        }else if (operation.equals("logout")){
+            this.logout(request,response);
         }
-
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,6 +49,15 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("Usuario", user);
             response.sendRedirect("home.jsp");
         }
+
+    }
+
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        HttpSession session = request.getSession();
+        session.invalidate();
+        request.setAttribute("message", "Log in");
+        request.getRequestDispatcher("home.jsp");
+        response.sendRedirect("index.jsp");
 
     }
 }

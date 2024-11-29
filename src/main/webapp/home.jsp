@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="logic.User" %>
-
+<jsp:include page="validate.jsp"/>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -99,7 +99,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="sidebar__option option__link">
+                    <a href="login?operation=logout" class="sidebar__option option__link">
                         <i class="option__icon logout"></i>
                         <span class="option__link--text">Cerrar Sesión</span>
                     </a>
