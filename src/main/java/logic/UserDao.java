@@ -1,9 +1,6 @@
 package logic;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserDao {
     private static final String USER_TABLE = "usuario";
@@ -22,19 +19,27 @@ public class UserDao {
 
         try {
             connection = mySQLConnection.getConnection();
-            String query = String.format("SELECT * FROM %s u WHERE u.email=? AND u.password_hash=?;", USER_TABLE);
+            String query = String.format("SELECT * FROM %s u WHERE u.email=?;", USER_TABLE);
             statement = connection.prepareStatement(query);
             statement.setString(1, email);
-            statement.setString(2, password);
             result = statement.executeQuery();
 
             while (result.next()) {
+                int userId = result.getInt("id_usuario");
+                String userName = result.getString("nombre");
+                String userEmail = result.getString("email");
+                String userHashedPassword = result.getString("password_hash");
+                Timestamp userRegisterDate = result.getTimestamp("fecha_registro");
+                Boolean isValidPassword = Password.validatePassword(password, userHashedPassword);
+
+                if(isValidPassword){
                 user = new User();
-                user.setIdUser(result.getInt("id_usuario"));
-                user.setName(result.getString("nombre"));
-                user.setEmail(result.getString("email"));
-                user.setPassword(result.getString("password_hash"));
-                user.setFechaRegistro(result.getTimestamp("fecha_registro"));
+                user.setIdUser(userId);
+                user.setName(userName);
+                user.setEmail(userEmail);
+                user.setHashedPassword(userHashedPassword);
+                user.setFechaRegistro(userRegisterDate);
+                }
             }
 
         } catch (Exception error) {

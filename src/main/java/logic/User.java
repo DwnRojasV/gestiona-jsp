@@ -6,7 +6,7 @@ public class User {
     private int idUser;
     private String name;
     private String email;
-    private String password;
+    private String hashedPassword;
     private Timestamp fechaRegistro;
 
     public User(){}
@@ -15,13 +15,13 @@ public class User {
             int idUser,
             String name,
             String email,
-            String password,
+            String hashedPassword,
             Timestamp fechaRegistro
             ) {
         this.idUser = idUser;
         this.name = name;
         this.email = email;
-        this.password = password;
+        this.hashedPassword = hashedPassword;
         this.fechaRegistro = fechaRegistro;
     }
 
@@ -49,12 +49,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getHashedPassword() {
+        return hashedPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
     public Timestamp getFechaRegistro() {
@@ -71,7 +71,7 @@ public class User {
                 this.name,
                 this.idUser,
                 this.email,
-                this.password,
+                this.hashedPassword,
                 this.fechaRegistro.toString());
     }
 }
