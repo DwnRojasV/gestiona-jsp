@@ -1,0 +1,96 @@
+@import url("./global.css");
+@import url("./sidebar.css");
+/* AJUSTES GENERALES */
+:root{
+    --color-principal:var(--accent-color);
+    --color-fondo:var(--accent-background-1);
+}
+html{
+    font-family: ubuntu, sans-serif;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body{
+    margin: 0;
+    background-color: var(--color-fondo);
+}
+
+/* ESTILOS TITULO Y MENU */
+.title-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.title-menu h1{
+    color: var(--accent-text-1);
+    font-weight: var(--bold);
+}
+
+.title-menu i {
+    font-size: 2rem;
+    margin-left: 2rem;
+    visibility: hidden;
+}
+
+/* ESTILOS SECCIONES */
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+section{
+    height: 20vh;
+    width: 400px;
+    display: flex;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+section a{
+    display: flex;
+    height: 100%;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-section{
+    width: 70%;
+    flex-wrap: wrap;
+    font-size: 1.8rem;
+    justify-content: space-evenly;
+    text-align: center;
+    color: var(--accent-text-1);
+}
+
+[class^='section-']{
+    background-color: var(--accent-interactive-component-2);
+    border: 1px solid var(--accent-border-separator-3);
+    border-radius: var(--radius);
+    box-shadow: 0px 1px 8px 1px var(--gray-border-separator-3);
+}
+
+
+.icon-section{
+    width: 30%;
+    font-size: 4rem;
+    color: var(--accent-text-2);
+    background-color: var(--accent-border-separator-1);
+    border: transparent;
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+}
+
+section:hover{
+    height: 23vh;
+    width: 425px;
+    transition-duration: .5s;
+}
+
+
