@@ -30,8 +30,18 @@
                     required>
                 <label class="form__label--required" for="password">Contraseña</label>
                 <input class="form__input" type="password" id="password" name="password"
-                    placeholder="Ingrese su contraseña" required>
+                    placeholder="Ingrese su contraseña" required />
                 <button class="form__button" type="submit">Iniciar Sesión</button>
+                <p class="form__error-message">
+                    <%
+                        String message = "";
+                        String msg = (String) request.getAttribute("mensaje");
+                        if (msg != null){
+                            message = msg;
+                        }
+                    %>
+                    <%=message%>
+                </p>
             </form>
             <p class="cardform__text">¿No tienes una cuenta?
                 <a href="./sign-up.html" class="card_form__text--link">Registrate</a>

@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
         User user = userDao.Login(email, password);
 
         if (user == null) {
-            request.setAttribute("mensaje", "Error en correo o contraseña");
+            request.setAttribute("mensaje", "Correo o Contraseña incorrectos");
             request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
