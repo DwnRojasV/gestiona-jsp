@@ -24,11 +24,10 @@ public class LoginServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String operation = request.getParameter("operation");
         System.out.println(operation);
-
         if (operation.equals("login")) {
             this.login(request, response);
-        }else if (operation.equals("logout")){
-            this.logout(request,response);
+        } else if (operation.equals("logout")) {
+            this.logout(request, response);
         }
     }
 
@@ -39,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 
         //realizar la consulta del usuario
         UserDao userDao = new UserDao();
-        User user = userDao.Login(email, password);
+        User user = userDao.login(email, password);
 
         if (user == null) {
             request.setAttribute("mensaje", "Correo o Contraseña incorrectos");
@@ -56,9 +55,8 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.invalidate();
         request.setAttribute("message", "Log in");
-        request.getRequestDispatcher("home.jsp");
-        response.sendRedirect("index.jsp");
-
+        request.getRequestDispatcher("home.jsp").forward(request,response);
+/*        response.sendRedirect("index.jsp");*/
     }
 }
 
