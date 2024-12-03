@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="logic.User" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
+
 
 <aside class="sidebar">
     <header class="sidebar__header">
@@ -72,7 +74,7 @@
         <p class="sidebar__label">Cuenta</p>
         <ul>
             <li>
-                <a href="/profile.html" class="sidebar__option option__link">
+                <a href="/account" class="sidebar__option option__link">
                     <i class="option__icon settings"></i>
                     <span class="option__link--text">Configuración</span>
                 </a>
@@ -91,7 +93,8 @@
         </div>
         <div class="sidebar_profile-information">
             <%
-                User user = (User) session.getAttribute("Usuario");
+                HttpSession currentSession = request.getSession(false);
+                User user = (User) currentSession.getAttribute("Usuario");
                 String username = "";
                 String email = "";
                 if(user != null){
