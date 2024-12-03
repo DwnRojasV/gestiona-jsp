@@ -94,7 +94,6 @@
                 User user = (User) session.getAttribute("Usuario");
                 String username = "";
                 String email = "";
-                System.out.println(user);
                 if(user != null){
                     username = user.getName();
                     email = user.getEmail();

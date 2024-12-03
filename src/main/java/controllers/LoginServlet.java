@@ -23,7 +23,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String operation = request.getParameter("operation");
-        System.out.println(operation);
         if (operation.equals("login")) {
             this.login(request, response);
         } else if (operation.equals("logout")) {
