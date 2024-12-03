@@ -22,15 +22,18 @@ public class AuthFilter implements Filter {
 
         String uri = request.getRequestURI();
 
-        if (uri.endsWith(LOGIN_PATH) || uri.endsWith(SIGNUP_PATH) || uri.endsWith(INDEX_PATH) || uri.endsWith("/")) {
+        if (uri.endsWith(LOGIN_PATH) || uri.endsWith(SIGNUP_PATH) || uri.endsWith(INDEX_PAGE) || uri.endsWith("/")) {
+
             if (session == null || session.getAttribute(USER_SESSION_ATRIBUTE) == null) {
                 filterChain.doFilter(servletRequest, servletResponse);
+            } else if (session != null && uri.endsWith(LOGIN_PATH)) {
+                filterChain.doFilter(servletRequest, servletResponse);
             } else {
-                response.sendRedirect(HOME_PATH);
+                response.sendRedirect(HOME_PAGE);
             }
         } else {
             if (session == null || session.getAttribute(USER_SESSION_ATRIBUTE) == null) {
-                response.sendRedirect(INDEX_PATH);
+                response.sendRedirect(INDEX_PAGE);
             } else {
                 filterChain.doFilter(servletRequest, servletResponse);
             }
