@@ -22,7 +22,12 @@ public class AuthFilter implements Filter {
 
         String uri = request.getRequestURI();
 
-        if (uri.endsWith(LOGIN_PATH) || uri.endsWith(SIGNUP_PATH) || uri.endsWith(INDEX_PAGE) || uri.endsWith("/") || uri.contains("assets")) {
+        if(uri.startsWith(request.getContextPath()+"/assets/")){
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
+
+        if (uri.endsWith(LOGIN_PATH) || uri.endsWith(SIGNUP_PATH) || uri.endsWith(INDEX_PAGE) || uri.endsWith("/")) {
 
             if (session == null || session.getAttribute(USER_SESSION_ATRIBUTE) == null) {
                 filterChain.doFilter(servletRequest, servletResponse);
