@@ -7,7 +7,10 @@
   <version>1.0-SNAPSHOT</version>
   <name>ensayo-jsp Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+  <!--Dependencias usadas en el Proyecto-->
   <dependencies>
+    <!--Dependencia para Test-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -15,29 +18,51 @@
       <scope>test</scope>
     </dependency>
 
+<!--Dependencia crear Servlets-->
     <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
       <version>6.1.0</version> <!-- Asegúrate de usar la última versión disponible -->
       <scope>provided</scope>
     </dependency>
+
+    <!--Dependencia para concexion con la base de datos-->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.26</version>
     </dependency>
+
+    <!--Dependencia para encriptar las contrasesñas-->
     <dependency>
       <groupId>org.mindrot</groupId>
       <artifactId>jbcrypt</artifactId>
       <version>0.4</version>
     </dependency>
+
+    <!--Dependencia par aanotaciones en Intellij Idea-->
     <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
       <version>RELEASE</version>
       <scope>compile</scope>
     </dependency>
+
+    <!--Jakarta Standard tag librery-->
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
   </dependencies>
+
+
   <build>
     <finalName>ensayo-jsp</finalName>
   </build>

@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GestionA - Sistema de gestión agrícola | Inciar Sesión </title>
     <link rel="icon" type="image/svg+xml" href="./assets/img/Favicon.svg">
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/global.css">
-    <link rel="stylesheet" href="./assets/css/authentication.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/global.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/authentication.css">
     <script src="./assets/script/autentication.js" defer></script>
 </head>
 

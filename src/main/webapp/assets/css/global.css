@@ -74,7 +74,6 @@ body,
 .form__label--required,
 .form__label {
   padding: 30px 0 10px;
-  background-color: red;
 }
 
 .form__label--required::after {
