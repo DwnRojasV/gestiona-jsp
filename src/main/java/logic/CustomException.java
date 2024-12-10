@@ -6,6 +6,7 @@ public class CustomException extends Exception{
     public static final String EMAIL_NULL_ERROR = "Error [E1003]: The email address cannot be null. " +
             "Please provide a valid email address.\n";
     public static final String PASSWORD_NULL_ERROR = "Error [E1003]: The password cannot be null. Please provide a valid password.\n";
+    public static final String USER_NULL_ERROR = "Error [E3001]: The User cannot be null.";
 
     public CustomException(String message){
         super(message);

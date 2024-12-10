@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html lang="es-ES">
 
@@ -27,15 +28,16 @@
         <h1>Perfil de usuario</h1>
       </header>
       <form
-        action="account?operation=update"
+        action="account?operation=update_user"
         method="post"
-        class="user-profile__form">
+        class="user-profile__form"
+        >
         <label for="user-fullname" class="form__label">Nombres y apellidos</label>
         <input type="text" name="user-fullname" id="user-fullname" class="form__input" type="text">
         <label for="user-email" class="form__label">Correo electrónico</label>
         <input type="text" name="user-email" id="user-email" class="form__input" type="email" disabled>
         <label for="user-telephone" class="form__label">Teléfono</label>
-        <input type="text" name="user-telephone" id="user-telephone" class="form__input" type="number">
+        <input type="text" name="user-telephone" id="user-phone" class="form__input" type="number">
         <h2 class="user-profile__subtitle">Cambiar contraseña</h2>
         <div class="user-profile__change-password">
           <div>
@@ -74,10 +76,31 @@
           </tr>
         </thead>
         <tbody class="table__body">
+
+         <c:forEach var="user" items="${userList}">
+           <tr>
+             <td>${user.idUser}</td>
+             <td>${user.name}</td>
+             <td>${user.email}</td>
+             <td>${user.role}</td>
+             <td>${user.permission}</td>
+              <td class="table__body--action">
+                <div class="table__action--edit"
+                  id="user__edit--${user.idUser}"
+                  title="Haz clic aquí para editar el usuario"
+                ></div>
+                <div class="table__action--delete"
+                  id="user__delete--${user.idUser}"
+                  title="Haz clic aquí para eliminar el usuario"
+                 ></div>
+              </td>
+           </tr>
+         </c:forEach>
         </tbody>
       </table>
       <button type="button" class="primary-button" id="add-user">Agregar usuario</button>
     </section>
+
     <!-- modal agregar usuario -->
     <dialog class="modal add-user">
       <button class="modal__close" autofocus>
@@ -109,18 +132,20 @@
         </div>
       </form>
     </dialog>
+
     <!-- Model Editar Usuario -->
     <dialog class="modal edit-user">
       <button class="modal__close--edit" autofocus>
         <i class="modal__close--icon"></i>
       </button>
       <h2 class="edit-user__title">Editar Usuario</h2>
-      <form action="./" method="post" class="edit-user__form">
+      <form action="/users/edit" method="post" class="edit-user__form">
         <label for="userName" class="form__label">Nombre Completo</label>
         <input type="text" name="userName" id="userName" class="form__input"
           placeholder="Ingrese el nombre completo del usuario">
         <label for="email" class="form__label">Correo</label>
         <input type="text" name="email" id="email" class="form__input" placeholder="Ingrese el correo del usuario">
+        <input type="hidden" id="userId" name="userId">
         <label for="rol" class="form__label">Rol</label>
         <select name="rol" id="rol" class="form__input form__select">
           <optgroup class="form__optgroup" label="Selecciona el rol del usuario">
@@ -131,7 +156,7 @@
         <label class="form__label">Permisos</label>
         <select name="permissions" id="permissions" class="form__input form__select">
           <optgroup class="form__optgroup" label="Selecciona el permiso del usuario">
-            <option class="form__option" value="Lector">Ver</option>
+            <option class="form__option">Ver</option>
             <option value="Editor">Editar</option>
           </optgroup>
         </select>
